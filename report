@@ -1,0 +1,64 @@
+#include<stdio.h>
+int main(){
+  int physics_marks , chemistry_marks , maths_marks;
+  int max_physics , max_chemistry, max_maths;
+ 
+  printf("The marks obtained in physics is: \n");
+  scanf("%d", &physics_marks);
+  printf("The total marks in physics test is: \n");
+  scanf("%d", &max_physics);
+  
+  printf("The marks obtained in chemistry is: \n");
+  scanf("%d", &chemistry_marks);
+  printf("The total marks in chemistry test is: \n");
+  scanf("%d", &max_chemistry);
+
+  printf("The marks obtained in maths is: \n");
+  scanf("%d", &maths_marks);
+  printf("The total marks in maths test is: \n");
+  scanf("%d", &max_maths);
+
+  if(max_physics<=0 || max_maths<=0 || max_chemistry<=0){
+    printf("Total marks must be a natural number\n");
+    return 1;
+  }
+  if(physics_marks>max_physics || chemistry_marks>max_chemistry|| maths_marks>max_maths || 
+    physics_marks<0 || chemistry_marks<0 || maths_marks <0){
+    printf("Subject marks should be between zero and total marks of the individual subject \n");
+    return 1;
+    }
+
+    
+  int total_marks_obtained = physics_marks + chemistry_marks + maths_marks;
+  int total_obtainable_marks= max_physics + max_chemistry + max_maths;
+  
+  
+  float physics_percentage=(((float)physics_marks/max_physics)*100);
+  float chemistry_percentage=(((float)chemistry_marks/max_chemistry)*100); 
+  float maths_percentage=(((float)maths_marks/max_maths)*100);
+
+  float total_percentage=((float)(physics_marks+maths_marks+chemistry_marks)/(total_obtainable_marks))*100;
+
+
+  if (chemistry_percentage>=33.0 && physics_percentage>=33.0 && maths_percentage>=33.0){
+    if(total_percentage >= 40.0){
+    printf("The student has passed and his percentage in the examination is:\n  %.2f%%", total_percentage);
+    }
+    else{
+      printf("The student has failed in the examination and his percentage in the examination is:\n %.2f%%", total_percentage);
+      printf("Although the student passed in all subjects but he didn't get required total 40%%\n");
+    }}
+  else{
+    printf("The student has failed and his percentage in the examination is %.2f%%\n", total_percentage);
+    if (chemistry_percentage<33.0)
+      printf("Failed in chemistry: %.2f%% \n",chemistry_percentage);
+    if (physics_percentage<33.0)
+      printf("Failed in physics: %.2f%% \n" , physics_percentage);
+    if (maths_percentage<33.0)
+      printf("Failed in maths: %.2f%% " , maths_percentage);
+    
+  }
+
+  return 0;
+    
+}
